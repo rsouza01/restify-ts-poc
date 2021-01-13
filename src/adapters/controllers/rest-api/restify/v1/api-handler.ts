@@ -6,12 +6,19 @@ enum HttpVerb {
   PATCH = "patch",
   PUT = "put",
   DELETE = "delete",
+	NONE = ""
 }
 
-interface ApiHandler {
-		verb: HttpVerb,
-		endpoint: string,
-		handler: (req: Request, res: Response, next: Next) => void
+abstract class ApiHandler {
+		// verb: HttpVerb = HttpVerb.NONE;
+		// endpoint: string = '';
+
+		constructor(public verb: HttpVerb, public endpoint: string) {
+			this.verb = verb;
+			this.endpoint = endpoint;
+		}
+
+		abstract handler(req: Request, res: Response, next?: Next): void;
 }
 
 export {HttpVerb, ApiHandler}

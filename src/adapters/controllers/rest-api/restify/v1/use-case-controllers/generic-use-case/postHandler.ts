@@ -4,19 +4,25 @@ import { SignupController } from './genericUseCaseController';
 import {Request, Response, Next} from 'restify';
 import {ApiHandler, HttpVerb} from '../../api-handler';
 
-function handler(req: Request, res: Response, next: Next): void {
+class GenericUseCaseHandler extends ApiHandler {
+	constructor() {
+		super(HttpVerb.POST, '/genericuc');
+	}
 
-	// res.send(await produtoService.list());
+	handler(req: Request, res: Response, next: Next): void {
 
-	// const controller = new SignupController({});
-  // return controller.handler(event, context);
-	res.send({});
+		// res.send(await produtoService.list());
+
+		// const controller = new SignupController({});
+		// return controller.handler(event, context);
+		// res.send({});
+
+		console.debug(`>>>>>>>> CALLED <<<<<<<<<<<`);
+
+	}
+
 }
 
-const apiHandler: ApiHandler = {
-	verb: HttpVerb.POST,
-	endpoint: 'genericuc',
-	handler
-}
+const apiHandler: ApiHandler = new GenericUseCaseHandler();
 
 export { apiHandler }

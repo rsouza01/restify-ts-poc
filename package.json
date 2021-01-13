@@ -5,15 +5,22 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "test": "npm run test:unit",
+    "build:prod": "npm clean; npm i; tsc",
+
+		"test": "npm run test:unit",
     "test:unit": "npx mocha --recursive -r ts-node/register ./test/**/*.unit.ts",
     "test:coverage": "npx nyc mocha --recursive -r ts-node/register ./test/**/*.unit.ts",
-    "lint:format": "prettier --write src/**/*.{js,jsx,ts,tsx}",
+
+		"lint:format": "prettier --write src/**/*.{js,jsx,ts,tsx}",
     "lint:run": "eslint src/**/*.{js,jsx,ts,tsx}",
     "lint:fix": "eslint --fix src/**/*.{js,jsx,ts,tsx}",
-    "sls:package": "sls package",
+
+		"sls:package": "sls package",
     "sls:deploy": "sls deploy",
-    "sls:undeploy": "sls remove"
+    "sls:undeploy": "sls remove",
+
+		"start:restify": "npm run build; node ./dist/src/adapters/controllers/rest-api/restify/v1/index.js",
+		"start:restify:clean": "npm run build:prod; node ./dist/src/adapters/controllers/rest-api/restify/v1/index.js"
   },
   "repository": {
     "type": "git",
