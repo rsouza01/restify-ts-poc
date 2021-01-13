@@ -1,0 +1,69 @@
+{
+  "name": "restify-ts-poc",
+  "version": "1.0.0",
+  "description": "Restify template API",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "npm run test:unit",
+    "test:unit": "npx mocha --recursive -r ts-node/register ./test/**/*.unit.ts",
+    "test:coverage": "npx nyc mocha --recursive -r ts-node/register ./test/**/*.unit.ts",
+    "lint:format": "prettier --write src/**/*.{js,jsx,ts,tsx}",
+    "lint:run": "eslint src/**/*.{js,jsx,ts,tsx}",
+    "lint:fix": "eslint --fix src/**/*.{js,jsx,ts,tsx}",
+    "sls:package": "sls package",
+    "sls:deploy": "sls deploy",
+    "sls:undeploy": "sls remove"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rsouza01/restify-ts-poc.git"
+  },
+  "keywords": [
+    "music-stream",
+    "api",
+    "rest"
+  ],
+  "author": "Rodrigo de Souza",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rsouza01/restify-ts-poc/issues"
+  },
+  "homepage": "https://github.com/rsouza01/restify-ts-poc#readme",
+  "dependencies": {
+    "aws-lambda": "^1.0.6",
+    "http-status-codes": "^2.1.4",
+    "is-valid-uuid-v4": "^1.2.1",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.53",
+    "@types/chai": "^4.2.14",
+    "@types/chai-as-promised": "^7.1.3",
+    "@types/mocha": "^8.0.3",
+    "@types/node": "^14.14.0",
+    "@types/sinon": "^9.0.10",
+    "@types/uuid": "^8.3.0",
+    "aws-sdk": "^2.691.0",
+    "aws-sdk-mock": "^5.1.0",
+    "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
+    "copy-webpack-plugin": "^6.0.3",
+    "eslint": "^7.16.0",
+    "eslint-config-airbnb-typescript-prettier": "^4.1.0",
+    "mocha": "^8.2.0",
+    "nyc": "^15.1.0",
+    "prettier": "^2.2.1",
+    "serverless": "^2.15.0",
+    "serverless-offline": "^6.4.0",
+    "serverless-pseudo-parameters": "2.5.0",
+    "serverless-webpack": "^5.3.2",
+    "sinon": "^9.2.2",
+    "ts-loader": "^8.0.6",
+    "ts-node": "^9.0.0",
+    "typescript": "^4.0.3",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-node-externals": "^1.7.2"
+  }
+}
