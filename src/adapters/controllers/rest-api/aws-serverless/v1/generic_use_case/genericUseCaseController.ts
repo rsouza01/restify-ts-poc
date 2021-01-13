@@ -1,9 +1,9 @@
 import { APIGatewayProxyEvent, Context } from 'aws-lambda';
 
 import { Session } from 'inspector';
-import Logger from '../../../usecases/ports/infrastructure/logger';
-import AbstractController from '../abstractController';
-import { Response } from '../models';
+import { Logger } from '../../../../../../usecases/ports/infrastructure';
+import AbstractController from '../../../abstractController';
+import { Response } from '../../../../models';
 
 class SignupController extends AbstractController {
   constructor(private service: any) {
