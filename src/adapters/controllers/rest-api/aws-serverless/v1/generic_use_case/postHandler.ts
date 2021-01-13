@@ -1,5 +1,5 @@
 import { APIGatewayProxyHandler, APIGatewayProxyEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
-import { SignupController } from './signupController';
+import { SignupController } from './genericUseCaseController';
 
 export const main: APIGatewayProxyHandler = async (
   event: APIGatewayProxyEvent,
