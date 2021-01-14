@@ -21,6 +21,19 @@ class GenericUseCaseHandler extends ApiHandler {
 		next();
 	}
 
+
+	execute(req: Request, res: Response, next: Next): void {
+
+		// res.send(await produtoService.list());
+
+		// const controller = new SignupController({});
+		// return controller.handler(event, context);
+
+		console.debug(`>>>>>>>> CALLED <<<<<<<<<<<`);
+		res.send({});
+		next();
+	}
+
 }
 
 const apiHandler: ApiHandler = new GenericUseCaseHandler();

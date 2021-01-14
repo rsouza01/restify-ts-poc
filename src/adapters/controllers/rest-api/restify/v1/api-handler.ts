@@ -15,12 +15,12 @@ abstract class ApiHandler {
 			this.endpoint = endpoint;
 		}
 
-		// execute(req: Request, res: Response, next: Next): void {
-		// 		console.debug(`>>>>>>>> handler CALLED <<<<<<<<<<<`);
-		// 		console.debug(`this: ${JSON.stringify(this, null, 2)}`);
+		execute(req: Request, res: Response, next: Next): void {
+				console.debug(`>>>>>>>> handler CALLED <<<<<<<<<<<`);
+				console.debug(`this: ${JSON.stringify(this, null, 2)}`);
 
-		// 		this.execute(req, res, next);
-		// }
+				this.handler(req, res, next);
+		}
 
 		abstract handler(req: Request, res: Response, next: Next): void;
 }
