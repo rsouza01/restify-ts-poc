@@ -13,10 +13,11 @@ import { ApiHandler, HttpVerb } from './api-handler';
 // console.debug(`REGISTERS => ${JSON.stringify(registers, null, 2)}`);
 
 const registerRoute = (server: Server, apiHandler: ApiHandler) => {
-	switch(apiHandler.verb) {
-		case HttpVerb.POST: server.post(apiHandler.endpoint, apiHandler.handler); break;
+// console.debug(`MAPPING => ${JSON.stringify(apiHandler, null, 2)}`);
+switch(apiHandler.verb) {
 		case HttpVerb.GET: server.get(apiHandler.endpoint, apiHandler.handler); break;
 		case HttpVerb.PUT: server.put(apiHandler.endpoint, apiHandler.handler); break;
+		case HttpVerb.POST: server.post(apiHandler.endpoint, apiHandler.handler); break;
 		case HttpVerb.PATCH: server.patch(apiHandler.endpoint, apiHandler.handler); break;
 		default: break; //TODO: THROW EXCEPTION
 	}

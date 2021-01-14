@@ -5,7 +5,7 @@ import { Logger } from '../../../../../../../usecases/ports/infrastructure';
 import AbstractController from '../../../../abstractController';
 import { Response } from '../../../../../models';
 
-class SignupController extends AbstractController {
+class GenericUseCaseController extends AbstractController {
   constructor(private service: any) {
     super();
   }
@@ -17,4 +17,4 @@ class SignupController extends AbstractController {
   }
 }
 
-export { SignupController };
+export { GenericUseCaseController };
