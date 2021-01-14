@@ -2,37 +2,28 @@ import * as errors from 'restify-errors';
 import { Server, Request, Response, Next, RouteOptions, RequestHandlerType, Route } from 'restify';
 
 import { handlers } from './use-case-controllers'
+import { ApiHandler, HttpVerb } from './api-handler';
 
-function handler(req: Request, res: Response, next: Next): void {
-	// res.send(await produtoService.list());
-	// const controller = new SignupController({});
-	// return controller.handler(event, context);
-	console.debug(`>>>>>>>> CALLED <<<<<<<<<<<`);
-	res.send({});
+// const registers:{
+// 	[index:string] : (opts: string | RegExp | RouteOptions, ...handlers: RequestHandlerType[]) => Route | boolean
+// } = {
+// 	'post': server.post.bind(server),
+// 	'get': server.get.bind(server)
+// };
+// console.debug(`REGISTERS => ${JSON.stringify(registers, null, 2)}`);
+
+const registerRoute = (server: Server, apiHandler: ApiHandler) => {
+	switch(apiHandler.verb) {
+		case HttpVerb.POST: server.post(apiHandler.endpoint, apiHandler.handler); break;
+		case HttpVerb.GET: server.get(apiHandler.endpoint, apiHandler.handler); break;
+		case HttpVerb.PUT: server.put(apiHandler.endpoint, apiHandler.handler); break;
+		case HttpVerb.PATCH: server.patch(apiHandler.endpoint, apiHandler.handler); break;
+		default: break; //TODO: THROW EXCEPTION
+	}
 }
 
 const registerRoutes = (server: Server) => {
-
-	const registers:{
-		[index:string] : (opts: string | RegExp | RouteOptions, ...handlers: RequestHandlerType[]) => Route | boolean
-	} = {
-		'post': server.post,
-		'get': server.get
-	};
-
-	const register = server.post;
-	console.debug(`REGISTERS => ${JSON.stringify(registers, null, 2)}`);
-
-	console.debug(`HANDLERS => ${JSON.stringify(handlers, null, 2)}`);
-
-	handlers.forEach(apiHandler => {
-		register(apiHandler.endpoint, apiHandler.handler);
-		// registers[apiHandler.verb](apiHandler.endpoint, apiHandler.handler);
-		// server.post(apiHandler.endpoint, apiHandler.handler);
-
-		// console.debug(`registers[apiHandler.verb] => ${JSON.stringify(registers[apiHandler.verb], null, 2)}`);
-
-	});
+	handlers.forEach(apiHandler => registerRoute(server, apiHandler));
 };
 
 export { registerRoutes };
