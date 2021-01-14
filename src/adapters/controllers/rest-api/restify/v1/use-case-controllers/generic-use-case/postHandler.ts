@@ -15,10 +15,10 @@ class GenericUseCaseHandler extends ApiHandler {
 
 		// const controller = new SignupController({});
 		// return controller.handler(event, context);
-		// res.send({});
 
 		console.debug(`>>>>>>>> CALLED <<<<<<<<<<<`);
-
+		res.send({});
+		next();
 	}
 
 }

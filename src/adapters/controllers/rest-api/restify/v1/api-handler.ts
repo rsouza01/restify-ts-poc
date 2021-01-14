@@ -10,15 +10,19 @@ enum HttpVerb {
 }
 
 abstract class ApiHandler {
-		// verb: HttpVerb = HttpVerb.NONE;
-		// endpoint: string = '';
-
 		constructor(public verb: HttpVerb, public endpoint: string) {
 			this.verb = verb;
 			this.endpoint = endpoint;
 		}
 
-		abstract handler(req: Request, res: Response, next?: Next): void;
+		// execute(req: Request, res: Response, next: Next): void {
+		// 		console.debug(`>>>>>>>> handler CALLED <<<<<<<<<<<`);
+		// 		console.debug(`this: ${JSON.stringify(this, null, 2)}`);
+
+		// 		this.execute(req, res, next);
+		// }
+
+		abstract handler(req: Request, res: Response, next: Next): void;
 }
 
 export {HttpVerb, ApiHandler}

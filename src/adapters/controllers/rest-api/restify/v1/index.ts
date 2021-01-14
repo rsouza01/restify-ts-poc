@@ -30,7 +30,7 @@ server.use(restifyPlugins.fullResponse());
 	*/
 console.log(`STARTING SERVER ON PORT ${config.port}`);
 server.listen(config.port, () => {
-	console.debug(`SERVER => ${JSON.stringify(server, null, 2)}`);
+	// console.debug(`SERVER => ${JSON.stringify(server, null, 2)}`);
 	registerRoutes(server);
 	console.log(`Server is listening on port ${config.port}`);
 });

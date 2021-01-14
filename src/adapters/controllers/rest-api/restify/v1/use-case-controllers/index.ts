@@ -5,4 +5,6 @@ const handlers: ApiHandler[] = [
 	generic_use_case_handler
 ]
 
+console.debug(`handlers: ${JSON.stringify(handlers, null, 2)}`);
+
 export { handlers };
