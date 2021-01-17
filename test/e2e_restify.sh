@@ -116,7 +116,7 @@ printlncolor "Endpoint: ${_API_ADDRESS}/genericuc"
 printlncolor "Expected HTTP STATUS: 200 (OK)"
 printlncolor '----------------------------------------------------------------------------------------------------------'
 # curl -i -H "Content-Type: application/json" -X POST ${_API_ADDRESS}/genericuc
-curl -H "Content-Type: application/json" -X POST ${_API_ADDRESS}/genericuc
+curl -i -H "Content-Type: application/json" -X POST ${_API_ADDRESS}/genericuc
 echo
 
 echo

@@ -1,6 +1,7 @@
 import Resource from './resource';
-import Response from './response';
+import ApiResponse from './api-response';
 import WebAdapterError from './webAdapterError';
 import Session from './session';
+import UseCaseResponse from './usecase-response';
 
-export { Resource, Response, WebAdapterError, Session };
+export { Resource, ApiResponse, UseCaseResponse, WebAdapterError, Session };

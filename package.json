@@ -1,18 +1,21 @@
 {
   "name": "restify-ts-poc",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Restify template API",
   "main": "index.js",
   "scripts": {
     "build": "tsc",
     "build:prod": "npm clean; npm i; tsc",
-    "test": "npm run test:unit",
+
+		"test": "npm run test:unit",
     "test:unit": "npx mocha --recursive -r ts-node/register ./test/**/*.unit.ts",
     "test:coverage": "npx nyc mocha --recursive -r ts-node/register ./test/**/*.unit.ts",
-    "lint:format": "prettier --write src/**/*.{js,jsx,ts,tsx}",
+
+		"lint:format": "prettier --write src/**/*.{js,jsx,ts,tsx}",
     "lint:run": "eslint src/**/*.{js,jsx,ts,tsx}",
     "lint:fix": "eslint --fix src/**/*.{js,jsx,ts,tsx}",
-    "sls:package": "sls package",
+
+		"sls:package": "sls package",
     "sls:deploy": "sls deploy",
     "sls:undeploy": "sls remove",
 

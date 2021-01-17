@@ -1,4 +1,5 @@
 import { Request, Response, Next } from 'restify';
+import { UseCaseResponse } from 'src/adapters/controllers/models';
 import AbstractController from '../../abstractController';
 
 enum HttpVerb {
@@ -14,16 +15,20 @@ enum HttpVerb {
  * Base class for Restify handlers
 */
 abstract class ApiHandler {
-	constructor(private controller: AbstractController, public verb: HttpVerb, public endpoint: string) {
+	constructor(protected controller: AbstractController, public verb: HttpVerb, public endpoint: string) {
 		this.verb = verb;
 		this.endpoint = endpoint;
 	}
 
-	handler = (req: Request, res: Response, next: Next): void => {
-		this.execute(req, res, next);
+	handler = async (req: Request, res: Response, next: Next): Promise<void> => {
+
+		const result: UseCaseResponse = await this.execute(req, res, next);
+
+		res.send(200, result);
+		next();
 	}
 
-	protected abstract execute(req: Request, res: Response, next: Next): void;
+	protected abstract execute(req: Request, res: Response, next: Next): Promise<UseCaseResponse>;
 }
 
 export { HttpVerb, ApiHandler }
