@@ -1,5 +1,5 @@
 import { Request, Response, Next } from 'restify';
-import { UseCaseResponse } from 'src/adapters/controllers/models';
+import { ApiResponse, UseCaseResponse } from 'src/adapters/controllers/models';
 import AbstractController from '../../abstractController';
 
 enum HttpVerb {
@@ -20,15 +20,21 @@ abstract class ApiHandler {
 		this.endpoint = endpoint;
 	}
 
-	handler = async (req: Request, res: Response, next: Next): Promise<void> => {
+	protected abstract execute(req: Request, res: Response, next: Next): Promise<UseCaseResponse>;
 
+	public handler = async (req: Request, res: Response, next: Next): Promise<void> => {
+
+		
 		const result: UseCaseResponse = await this.execute(req, res, next);
 
-		res.send(200, result);
+		const response: ApiResponse = {
+			statusCode: 200,
+			data: result
+		}
+
+		res.send(200, response);
 		next();
 	}
-
-	protected abstract execute(req: Request, res: Response, next: Next): Promise<UseCaseResponse>;
 }
 
 export { HttpVerb, ApiHandler }

@@ -4,10 +4,6 @@ import {Request, Response, Next} from 'restify';
 import {ApiHandler, HttpVerb} from '../../api-handler';
 import { ApiResponse, UseCaseResponse } from '../../../../../models';
 
-import { Session } from 'inspector';
-import { Logger } from '../../../../../../../usecases/ports/infrastructure';
-
-
 class GenericUseCaseHandler extends ApiHandler {
 	constructor() {
 		super(new GenericUseCaseController({}), HttpVerb.POST, '/genericuc');
