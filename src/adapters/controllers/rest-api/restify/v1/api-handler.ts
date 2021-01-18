@@ -24,7 +24,7 @@ abstract class ApiHandler {
 
 	public handler = async (req: Request, res: Response, next: Next): Promise<void> => {
 
-		
+
 		const result: UseCaseResponse = await this.execute(req, res, next);
 
 		const response: ApiResponse = {
